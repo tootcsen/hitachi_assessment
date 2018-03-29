@@ -1,0 +1,92 @@
+[
+	{
+		"id":		"1",
+		"name": 	"5km Running",
+		"level": 	"Beginner",
+		"image": 	"running_1.jpg",
+		"calories": "500",
+		"point": 	"100"
+		
+	},
+	{
+		"id":		"2",
+		"name": 	"15km Running",
+		"level": 	"Intermediate",
+		"image": 	"running_2.jpg",
+		"calories": "900",
+		"point": 	"200"
+	},
+	{
+		"id":		"3",
+		"name": 	"25km Running",
+		"level":	"Intermediate",
+		"image": 	"running_3.jpg",
+		"calories": "2000",
+		"point": 	"300"
+	},
+
+	{
+		"id":		"4",
+		"name": 	"1000 Calories Run",
+		"level": 	"intermediate",
+		"image": 	"running_4.jpg",
+		"calories": "1000",
+		"point": 	"300"
+	},
+
+	{
+		"id":		"10",
+		"name": 	"3000 Calories Run",
+		"level": 	"Intermediate",
+		"image": 	"running_5.jpg",
+		"calories": "3000",
+		"point": 	"500"
+	},
+
+	{
+		"id":		"5",
+		"name": 	"5000 Calories Run",
+		"level": 	"Intermediate",
+		"image": 	"running_10.jpg",
+		"calories": "5000",
+		"point": 	"8000"
+	},
+
+	{
+		"id":		"6",
+		"name": 	"20km Running",
+		"level":	"Intermediate",
+		"image": 	"running_6.jpg",
+		"calories": "1000",
+		"point": 	"300"
+	},
+
+	{
+		"id":		"7",
+		"name": 	"Family Running",
+		"level": 	"Intermediate",
+		"image": 	"running_7.jpg",
+		"calories": "500",
+		"point": 	"1000"
+	},
+
+	{
+		"id":		"8",
+		"name": 	"25km Running",
+		"level": 	"Intermediate",
+		"image": 	"running_8.jpg",
+		"calories": "3500",
+		"point": 	"1500"
+	},
+
+
+
+	{
+		"id":		"9",
+		"name": 	"Marathon",
+		"level": 	"Advanced",
+		"image": 	"running_9.jpg",
+		"calories": "4000",
+		"point": 	"5000"
+	}
+]

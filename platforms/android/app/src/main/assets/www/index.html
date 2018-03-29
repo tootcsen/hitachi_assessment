@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="App">
+
+<head>
+
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+	<meta name="description" content="">
+	<meta name="author" content="">
+
+	<title>New Age - Start Bootstrap Theme</title>
+
+	<!-- Bootstrap core CSS -->
+	<link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+
+	<!-- Custom fonts for this template -->
+	<link rel="stylesheet" href="vendor/font-awesome/css/font-awesome.min.css">
+	<link rel="stylesheet" href="vendor/simple-line-icons/css/simple-line-icons.css">
+	<link href="https://fonts.googleapis.com/css?family=Lato" rel="stylesheet">
+	<link href="https://fonts.googleapis.com/css?family=Catamaran:100,200,300,400,500,600,700,800,900" rel="stylesheet">
+	<link href="https://fonts.googleapis.com/css?family=Muli" rel="stylesheet">
+
+	<!-- Plugin CSS -->
+	<link rel="stylesheet" href="device-mockups/device-mockups.min.css">
+
+	<!-- Custom styles for this template -->
+	<link href="css/new-age.css" rel="stylesheet">
+
+</head>
+
+<body id="page-top">
+
+	<!-- Navigation -->
+	<nav class="navbar navbar-expand-lg navbar-light navbar-noborder fixed-top" id="mainNav">
+		<div class="container">
+			<button class="navbar-toggler navbar-toggler-left" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+				<i class="fa fa-bars"></i>
+			</button>
+			
+			<a class="navbar-brand js-scroll-trigger text-center" href="#page-top"><span id="title"></span></a>
+			
+			<div class="collapse navbar-collapse" id="navbarResponsive">
+				<ul class="navbar-nav ml-auto">
+					<li class="nav-item">
+						<a class="nav-link js-scroll-trigger" href="#/home">Home</a>
+					</li>
+					<li class="nav-item">
+						<a class="nav-link js-scroll-trigger" href="#/features">Features</a>
+					</li>
+					<li class="nav-item">
+						<a class="nav-link js-scroll-trigger" href="#/contact">Contact</a>
+					</li>
+				</ul>
+			</div>
+		</div>
+	</nav>
+
+	<section class="bg-primary-new text-center" id="download">
+		<div class="container">
+			<div class="row">
+				<div class="col-md-12 mx-auto">
+					<ng-view></ng-view>
+				</div>
+			</div>
+		</div>
+	</section>
+
+	<footer class="fixed-bottom fixed-bottom-bottom">	  
+		<div main-menu></div>
+	</footer>
+
+	<!-- Bootstrap core JavaScript -->
+	<script src="vendor/jquery/jquery.min.js"></script>
+	<script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+	<script src="scripts/angular.min.js"></script>
+	<script src="scripts/angular-route.min.js"></script>
+
+	<!-- Plugin JavaScript -->
+	<script src="vendor/jquery-easing/jquery.easing.min.js"></script>
+
+	<!-- Custom scripts for this template -->
+	<script src="js/new-age.min.js"></script>
+	<script src="js/app.js"></script>
+	<script src="js/app/directives/main-menu-directive.js"></script>
+	<script src="js/app/config/route.js"></script>
+	<script src="js/app/services/contact-service.js"></script>
+	<script src="js/app/controllers/contact-controller.js"></script>
+
+</body>
+
+<script>
+$(function() {
+	$(document).on('click', 'ul li.menu-custom', function() {
+
+		var id = $(this).prop('id');
+		
+		$('li.menu-custom').each(function(i, obj){
+				
+			if ( id == obj.id ) {
+				
+				 $('img', this).attr('src', 'img/'+id+'.png');
+			} else {
+
+				$('img', this).attr('src', 'img/'+obj.id+'-d.png');
+			}
+			
+		})
+				
+		$(this).addClass('active').siblings().removeClass('active');
+		 
+		$('#title').html($(this).prop('id'));
+	})
+})		    
+</script>	
+</html>

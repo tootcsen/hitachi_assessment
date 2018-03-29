@@ -1,0 +1,210 @@
+<style>
+.fix-image {
+	width: 100%;
+	height: 300px;
+	padding: 5px 5px;
+}
+
+.text-sm {
+	font-size: 11px;
+}
+
+.fixed-search {
+	position: fixed;
+	top: 44px;
+	right: 0;
+	left: 0;
+	z-index: 1030;
+	background: #fff;
+}
+
+.form-control-noborder {
+	border: none;
+	border-radius: 0;
+	box-shadow: 5px 5px 5px #f1f1f1;
+
+}
+
+.slidecontainer {
+    width: 100%;
+}
+
+.slider {
+    -webkit-appearance: none;
+    width: 100%;
+    height: 10px;
+    border-radius: 5px;
+    background: #d3d3d3;
+    outline: none;
+    opacity: 0.7;
+    -webkit-transition: .2s;
+    transition: opacity .2s;
+	background: -webkit-linear-gradient(to left, #7b4397, #f4cb42);
+	background: linear-gradient(to left, #7b4397, #f4cb42);
+}
+
+.slider:hover {
+    opacity: 1;
+}
+
+.slider::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    appearance: none;
+    width: 30px;
+    height: 30px;
+    border: 0;
+    background: url('img/slider.png');
+    cursor: pointer;
+}
+
+.slider::-moz-range-thumb {
+    width: 30px;
+    height: 30px;
+    border: 0;
+    background: url('img/slider.png');
+    cursor: pointer;
+}
+
+.advanced {
+	color: #7b4397;
+}
+
+.beginner {
+	color: #f4cb42;
+}
+
+.intermediate {
+	color: #8c8b82;
+}
+
+.points {
+	color: #5894f4;
+}
+
+.img-small {
+	height: 10px;
+	width: auto;
+}
+
+.listing {
+	border: 1px solid #f1f1f1;
+	margin-bottom: 5px;
+	box-shadow: 1px 1px 2px #f1f1f1;
+}
+
+.float-remark {
+	position: absolute;
+	right: 20px;
+	top: 5px;
+	content: url("img/ic-bookmark.png");
+}
+
+.float-remark-active {
+	position: absolute;
+	right: 20px;
+	top: 5px;
+	content: url("img/ic-bookmark-d.png");
+}
+</style>
+<div class="row fixed-search">			
+	<div class="col-md-12 mx-auto">
+		<div>
+			<i class="glyphicon glyphicon-search"></i>
+			<input type="text" class="form-control form-control-noborder" placeholder="Search for a challenge" id="myInput">							
+		</div>
+	</div>	
+</div>
+<div class="col-lg-12 my-auto">
+	<div class="container-fluid">
+		<div class="row">			
+			<div class="col-md-12 mx-auto">
+				<div class="slidecontainer">
+					<input type="range" min="1" max="100" value="50" class="slider" id="myRange">
+					<div class="row col-md-12 col-sm-12 text-sm">
+						<div class="col-3 beginner text-left">Beginner</div><div class="col-6 intermediate">Intermediate</div><div class="col-3 advanced text-right">Advanced</div>
+					</div>					
+				</div>
+			</div>	
+		</div>
+		<div class="row" id="myTable">
+			<div class="col-md-12 mx-auto" ng-repeat="data in datas">
+
+				<div class="feature-item listing">
+					<img src="img/ic-bookmark.png" id="running_{{data.id}}_remark" class="float-remark">
+					<div>
+					<a href='#/challenges/{{data.id}}'>
+						<img class="img-fluid fix-image" ng-src='img/{{data.image}}'>
+						<h3>{{data.name}}</h3>
+						<p class="text-muted text-sm ">
+							<img src="img/ic-dot.png" class="img-small"> {{data.level}}
+							&nbsp;&#124;&nbsp;<img src="img/ic-burn.png" class="img-small">&nbsp;{{data.calories}} Calories
+							&nbsp;&#124;&nbsp;<span class="points">+{{data.point}}&nbsp;Points</span></p>
+					</a>
+					</div>
+				</div>
+			</div>	
+		</div>
+	</div>	
+</div>
+
+<script type="text/javascript">
+$(document).ready(function() {
+
+	$(document).on('keyup', '#myInput', function () {
+		var filter 	= $(this).val();
+		//console.log(filter);
+		search(filter);
+	})
+
+	var slider = document.getElementById("myRange");
+
+	slider.oninput = function() {
+
+	  if ( this.value < 30 ) {
+		  
+		search('beginner');
+	  }
+	  
+	  if ( this.value > 30 && this.value < 70 ) {
+		  
+		search('intermediate');
+	  }
+	  
+	  if ( this.value > 70 ) {
+		  
+		search('advanced');
+	  }
+	}
+	
+	function search(keyword) {
+
+		table 	= $("#myTable");
+		tr 		= $(".listing");
+		var filter	= keyword.toUpperCase();
+		
+		// Loop through all table rows, and hide those who don't match the search query
+		for (i = 0; i < tr.length; i++) {
+			td = tr[i];
+			if (td) {
+				if (td.innerHTML.toUpperCase().indexOf(filter) > -1) {
+					tr[i].style.display = "";
+				} else {
+					tr[i].style.display = "none";
+				}
+			} 
+		}
+	}
+
+	$(document).on('click', '.float-remark', function() {
+
+		$(this).removeClass('float-remark').addClass('float-remark-active');
+		
+	})
+
+	$(document).on('click', '.float-remark-active', function() {
+
+		$(this).removeClass('float-remark-active').addClass('float-remark');
+	})
+
+})
+</script>
